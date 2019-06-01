@@ -1,0 +1,46 @@
+vector<vector<int> > Solution::generateMatrix(int A) {
+    vector<vector<int>> arr(A,vector<int> (A));
+    int left=0,right=arr[0].size()-1,down=arr.size()-1,up=0;
+    int count=1;
+    int seq=0;  //a variable to guide through in sequence
+        while(up<=down&&left<=right){
+            //move right
+            if(seq==0){
+                for(int i=left;i<=right;i++){
+                    arr[up][i]=count;
+                    count++;
+                }
+            up++;
+            seq=1;
+            }
+            else if(seq==1){
+            //move down
+                for(int i=up;i<=down;i++){
+                    arr[i][right]=count;
+                    count++;
+                }
+            right--;
+            seq=2;
+            }
+            //move left
+            else if(seq==2){
+                for(int i=right;i>=left;i--){
+                    arr[down][i]=count;
+                    count++;
+                }
+            down--;
+            seq=3;
+            //move up
+            }
+            else if(seq==3){
+                for(int i=down;i>=up;i--){
+                    arr[i][left]=count;
+                    //arr.push_back(arr[count][down]);
+                    count++;
+                }
+            left++;
+            seq=0;
+            }
+        }
+    return arr;
+}
