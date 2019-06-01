@@ -18,7 +18,7 @@ string Solution::largestNumber(const vector<int> &A) {
     for(int i=0;i<X.size();i++){
         result+=X[i];
     }
-    //Now if all the elements of the array is zero
+    //Now if all the elements of the array are zero
     int j=0;
     while(result[j]=='0'){
         j++;
